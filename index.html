@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <style>
+        #main{
+            border: 2px double grey;
+            height: 400px;
+            width: 299px;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: grey;
+            margin-top: 50px;
+            margin-left: 50px;
+            
+            
+        }
+        #bot{
+            display: grid;
+            grid-template-columns: 70px 70px 70px 70px;
+            grid-template-rows: 70px 70px 70px 70px;
+            /* row-gap: 10px;
+            column-gap: 5px; */
+            justify-content: space-around;
+            row-gap: 10px;
+        }
+        #inp{
+            height: 80px;
+            width: 275px;
+            border-radius: 10px;
+            font-size: larger;
+            background-color: black;
+            color: greenyellow;
+            text-align: right;
+            padding: 0px 10px;
+            
+        }
+        #topp{
+            margin-bottom: 5px;
+        }
+        button{
+            border-radius: 50%;
+            font-size: larger;
+            font-weight: bolder;
+        }
+        button:hover{
+            transform: scale(1.05);
+            transition-timing-function: ease-in-out;
+            transition-duration: 0.05s;
+        }
+        .bl{
+            background-color: black;
+            color: white;
+        }
+        .red{
+            background-color: red;
+            color: white;
+        }
+
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <div id="topp">
+        <input type="text" id="inp" />
+      </div>
+      <div id="bot">
+        <button onclick="addValue('7')">7</button>
+        <button onclick="addValue('8')">8</button>
+        <button onclick="addValue('9')">9</button>
+        <button onclick="addValue('+')" class="bl">+</button>
+        <button onclick="addValue('4')">4</button>
+        <button onclick="addValue('5')">5</button>
+        <button onclick="addValue('6')">6</button>
+        <button onclick="addValue('-')" class="bl">-</button>
+        <button onclick="addValue('1')">1</button>
+        <button onclick="addValue('2')">2</button>
+        <button onclick="addValue('3')">3</button>
+        <button onclick="addValue('*')" class="bl">x</button>
+        <button onclick="clearData()" class="red">AC</button>
+        <button onclick="addValue('0')">0</button>
+        <button onclick="resultOutput()" class="bl">=</button>
+        <button onclick="addValue('/')" class="bl">/</button>
+      </div>
+    </div>
+    <script>
+        let result=document.getElementById("inp");
+
+        let resCount=0;
+        
+        function addValue(x){
+            if(resCount>0){
+                result.value="";
+                resCount=0;
+            }
+            if(result.value[0]=="0"){
+                result.value="";
+            }
+            result.value=result.value+x;
+        }
+
+        function resultOutput(){
+            resCount++;
+            let total=eval(result.value);
+            result.value=total;
+
+        }
+        function clearData(){
+            result.value="";
+        }
+        
+    </script>
+  </body>
+</html>
